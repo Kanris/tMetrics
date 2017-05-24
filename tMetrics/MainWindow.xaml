@@ -1,0 +1,27 @@
+﻿<Window x:Class="tMetrics.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Metrics Calculator" Height="310" Width="436" FontFamily="Segoe UI"
+        WindowStartupLocation="CenterScreen">
+    <Grid RenderTransformOrigin="0.499,-0.141" Margin="0,0,0,2">
+        <Menu IsMainMenu="True" VerticalAlignment="Top" FontFamily="Segoe UI">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Load java source" Click="btnImportProject_OnClick" />
+                <Separator />
+                <MenuItem Header="Exit" Click="btnExit_OnClick" />
+            </MenuItem>
+            <MenuItem Header="_Help" Click="btnHelp_OnClick" />
+        </Menu>
+        <DataGrid x:Name="_myDataGrid"
+              AutoGenerateColumns="False"
+              
+              IsReadOnly="True" Margin="0,18,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=FullName}" />
+                <DataGridTextColumn Header="LOC" Binding="{Binding Path=LOC}" />
+                <DataGridTextColumn Header="CYC" Binding="{Binding Path=CYC}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
