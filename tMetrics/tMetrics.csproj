@@ -63,9 +63,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DGHelper.cs" />
-    <Compile Include="ImportFiles.cs" />
-    <Compile Include="Item.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -99,6 +96,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\tMetrics.DataGridHelper\tMetrics.DataGridHelper.csproj">
+      <Project>{bdd4f3cf-75ca-4468-9055-cc98722da5e1}</Project>
+      <Name>tMetrics.DataGridHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\tMetrics.Library\tMetrics.Library.csproj">
       <Project>{863a669b-a5ff-4cfb-9b0b-73f8bdd7bddb}</Project>
       <Name>tMetrics.Library</Name>
