@@ -32,7 +32,7 @@ namespace tMetrics
 
         private static bool isEmpty(string line)
         {
-            return line.Length < 0;
+            return String.IsNullOrWhiteSpace(line);
         }
     }
 }

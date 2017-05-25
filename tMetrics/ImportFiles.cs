@@ -7,7 +7,7 @@ using System.IO;
 
 namespace tMetrics
 {
-    class ImportFiles
+    public class ImportFiles
     {
         private string nameOfProject;
         private FileInfo[] pathToSource;

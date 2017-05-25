@@ -64,8 +64,10 @@
     </Compile>
     <Compile Include="CheckForCategory.cs" />
     <Compile Include="CYCLO.cs" />
+    <Compile Include="DGHelper.cs" />
     <Compile Include="GetMethod.cs" />
     <Compile Include="ImportFiles.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="LinesOfCode.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

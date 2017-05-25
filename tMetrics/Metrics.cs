@@ -7,16 +7,26 @@ using System.IO;
 
 namespace tMetrics
 {
-    class Metrics
+    public static class Metrics
     {
-        public int LOC(string path)
+        public static void LOC(FileInfo[] pathToFile, out int[] lengthOfCode)
         {
-            return LinesOfCode.LOC(path);       
+            lengthOfCode = new int[pathToFile.Length];
+
+            for (int i = 0; i < lengthOfCode.Length; ++i)
+            {
+                lengthOfCode[i] = LinesOfCode.LOC(pathToFile[i].FullName);
+            }
         }
 
-        public int CYC(string path)
+        public static void CYC(FileInfo[] pathToFile, out int[] cyclomatic)
         {
-            return CYCLO.CYC(path);
+            cyclomatic = new int[pathToFile.Length];
+
+            for (int i = 0; i < cyclomatic.Length; ++i)
+            {
+                cyclomatic[i] = CYCLO.CYC(pathToFile[i].FullName);
+            }
         }
     }
 }
