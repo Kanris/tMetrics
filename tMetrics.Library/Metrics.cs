@@ -9,24 +9,28 @@ namespace tMetrics.Library
 {
     public static class Metrics
     {
-        public static void LOC(FileInfo[] pathToFile, out int[] lengthOfCode)
+        public async static Task<int[]> LOC(FileInfo[] pathToFile)
         {
-            lengthOfCode = new int[pathToFile.Length];
+            var lengthOfCode = new int[pathToFile.Length];
 
             for (int i = 0; i < lengthOfCode.Length; ++i)
             {
-                lengthOfCode[i] = LinesOfCode.LOC(pathToFile[i].FullName);
+                lengthOfCode[i] = await Task.Run(() => LinesOfCode.LOC(pathToFile[i].FullName));
             }
+
+            return lengthOfCode;
         }
 
-        public static void CYC(FileInfo[] pathToFile, out int[] cyclomatic)
+        public async static Task<int[]> CYC(FileInfo[] pathToFile)
         {
-            cyclomatic = new int[pathToFile.Length];
+            var cyclomatic = new int[pathToFile.Length];
 
             for (int i = 0; i < cyclomatic.Length; ++i)
             {
-                cyclomatic[i] = CYCLO.CYC(pathToFile[i].FullName);
+                cyclomatic[i] = await Task.Run(() => CYCLO.CYC(pathToFile[i].FullName));
             }
+
+            return cyclomatic;
         }
     }
 }

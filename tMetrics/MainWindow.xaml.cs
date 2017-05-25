@@ -36,7 +36,7 @@ namespace tMetrics
             this.Title = $"Project name: {projectName}";
         }
 
-        private void btnImportProject_OnClick(object sender, RoutedEventArgs e)
+        private async void btnImportProject_OnClick(object sender, RoutedEventArgs e)
         {
             FolderBrowserDialog openNewProject = new FolderBrowserDialog();
 
@@ -49,19 +49,14 @@ namespace tMetrics
 
                 FileInfo[] pathToSource = importFiles.getPathToSource();
 
-                int[] cyclomatic = new int[pathToSource.Length], 
-                    lengthOfCode = new int[pathToSource.Length];
+                int[] cyclomatic, 
+                    lengthOfCode;
 
-                Thread locThread = new Thread(() => Metrics.LOC(pathToSource, out lengthOfCode));
-                locThread.Start();
+                lengthOfCode = await Metrics.LOC(pathToSource);
+                cyclomatic = await Metrics.CYC(pathToSource);
 
-                Thread cycThread = new Thread(() => Metrics.CYC(pathToSource, out cyclomatic));
-                cycThread.Start();
 
                 SetTitle(importFiles.getNameOfProject());
-
-                locThread.Join();
-                cycThread.Join();
 
                 DGHelper.CreateGrid(lengthOfCode, cyclomatic, pathToSource, importFiles, _myDataGrid);
 
