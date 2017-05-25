@@ -12,7 +12,6 @@ namespace tMetrics
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ImportFiles importFiles;
 
         public MainWindow()
         {
@@ -44,17 +43,13 @@ namespace tMetrics
 
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                string pathToProject = openNewProject.SelectedPath;
-                importFiles = new ImportFiles(pathToProject);
+                var pathToProject = openNewProject.SelectedPath;
+                var importFiles = new ImportFiles(pathToProject);
 
                 FileInfo[] pathToSource = importFiles.getPathToSource();
 
-                int[] cyclomatic, 
-                    lengthOfCode;
-
-                lengthOfCode = await Metrics.LOC(pathToSource);
-                cyclomatic = await Metrics.CYC(pathToSource);
-
+                var lengthOfCode = await Metrics.LOC(pathToSource);
+                var cyclomatic = await Metrics.CYC(pathToSource);
 
                 SetTitle(importFiles.getNameOfProject());
 
