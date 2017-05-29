@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Threading;
 using tMetrics.Library;
 using tMetrics.DataGridHelper;
+using System.Threading.Tasks;
 
 namespace tMetrics
 {
@@ -48,8 +49,8 @@ namespace tMetrics
 
                 FileInfo[] pathToSource = importFiles.getPathToSource();
 
-                var lengthOfCode = await Metrics.LOC(pathToSource);
-                var cyclomatic = await Metrics.CYC(pathToSource);
+                var lengthOfCode = await Task.Run(() => Metrics.LOC(pathToSource));
+                var cyclomatic = await Task.Run(() => Metrics.CYC(pathToSource));
 
                 SetTitle(importFiles.getNameOfProject());
 
