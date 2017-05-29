@@ -11,11 +11,12 @@ namespace tMetrics.DataGridHelper
     {
         private string nameOfProject;
         private FileInfo[] pathToSource;
+        private const string FILE_FORMAT = "*.java";
 
         public ImportFiles(string pathToProject)
         {
             DirectoryInfo countInfo = new DirectoryInfo(pathToProject);
-            pathToSource = countInfo.GetFiles("*.java", SearchOption.AllDirectories);
+            pathToSource = countInfo.GetFiles(FILE_FORMAT, SearchOption.AllDirectories);
             nameOfProject = countInfo.Name;
         }
 
